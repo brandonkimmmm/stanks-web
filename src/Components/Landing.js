@@ -14,6 +14,8 @@ function Landing() {
 						</p>
 					</Jumbotron>
 				</Col>
+			</Row>
+			<Row>
 				<Col>
 					<PlayerList />
 				</Col>
