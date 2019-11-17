@@ -22,7 +22,7 @@ function PlayerList() {
 				<Row>
 					{
 						players.data.map((player, i) => (
-							<Col lg={4}>
+							<Col key={i} lg={4}>
 								<PlayerCard key={i} player={player} />
 							</Col>
 						))
