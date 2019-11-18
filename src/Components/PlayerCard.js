@@ -15,7 +15,10 @@ function PlayerCard({ player }) {
 				<Button
 					variant="primary"
 					as={Link}
-					to={`/player/${player.first_name}/${player.last_name}`}
+					to={{
+						pathname: `/player/${player.first_name}/${player.last_name}`,
+						player
+					}}
 				>
 						See Birthday Stats
 				</Button>
