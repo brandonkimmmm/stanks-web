@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Col, Row } from 'react-bootstrap';
+import { Container, Col, Row, ListGroup } from 'react-bootstrap';
 import PlayerTable from './StatsTable';
 import axios from 'axios';
 import { useParams } from 'react-router';
@@ -19,6 +19,7 @@ function Player(props) {
 		} else {
 			axios.get(`http://localhost:10010/v0/player?player_name=${first}+${last}`)
 				.then((data) => {
+					console.log(data.data);
 					setPlayer(data.data);
 				})
 				.catch((error) => {
@@ -31,13 +32,22 @@ function Player(props) {
 		<Container>
 			<Row>
 				<Col>
-					<img src={player.image} />
+					<img src={player.image} alt='Player' />
+				</Col>
+				<Col>
+					<ListGroup>
+						<ListGroup.Item>{player.full_name}</ListGroup.Item>
+						<ListGroup.Item>{player.dob}</ListGroup.Item>
+						<ListGroup.Item>{player.nickname}</ListGroup.Item>
+					</ListGroup>
 				</Col>
 			</Row>
 			<Row>
-				<PlayerTable
-					props={props}
-				/>
+				<Col>
+					<PlayerTable
+							props={props}
+					/>
+				</Col>
 			</Row>
 		</Container>
 	);
